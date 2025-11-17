@@ -53,28 +53,28 @@ export ROS_DOMAIN_ID=13
 ```
 ## 4. Compilación del workspace.
 
-´´´
+```
 cd ~/Documents/catamaran_ros2
 colcon build
-´´´
+```
 
 Después de compilar:
-´´´
+```
 source install/setup.bash
-´´
+```
 ## 5. Ejecutar nodos de prueba.
 
 En una terminal.
 
-´´´
+```
 cd ~/Documents/catamaran_ros2
 source install/setup.bash
 ros2 run my_cpp_pkg listener_velocidad
-´´
+```
 En otra terminal.
 
-´´´
+```
 cd ~/Documents/catamaran_ros2
 source install/setup.bash
 ros2 run my_cpp_pkg control_velocidad
-´´
+```
