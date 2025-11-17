@@ -18,7 +18,7 @@ El objetivo principal es controlar motores brushless desde un PC (publicador) ha
 ### 1.1. ROS 2
 
 - Distro recomendada: **ROS 2 Humble** en **PC** y **Raspberry Pi**.
-- Sistema: Ubuntu 22.04 / Debian similar (en Pi puede ser Raspberry Pi OS basado en Debian).
+- Sistema: Ubuntu 22.04 .
 
 Instalación de ROS 2 Humble ( ver docs oficiales para detalles): [ROS2 Humble](https://docs.ros.org/en/humble/Installation/Ubuntu-Install-Debs.html)
 
