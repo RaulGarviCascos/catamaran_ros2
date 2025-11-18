@@ -10,24 +10,24 @@ find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(example_interfaces REQUIRED)
 find_package(std_msgs REQUIRED)
-find_package(my_interfaces REQUIRED)
+find_package(catamaran_interfaces REQUIRED)
 
 add_executable(listener_velocity src/listener_velocity.cpp)
 ament_target_dependencies(listener_velocity 
                           rclcpp 
-                          my_interfaces
+                          catamaran_interfaces
                           )
 
 add_executable(motor_brushless_node src/motor_brushless_node.cpp)
 ament_target_dependencies(motor_brushless_node 
                           rclcpp
-                          my_interfaces
+                          catamaran_interfaces
                           )
 
 add_executable(control_velocity src/control_velocity.cpp)
 ament_target_dependencies(control_velocity 
                           rclcpp
-                          my_interfaces
+                          catamaran_interfaces
                           std_msgs
                           )
 

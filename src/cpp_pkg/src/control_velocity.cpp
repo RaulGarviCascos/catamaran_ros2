@@ -1,16 +1,16 @@
 #include "rclcpp/rclcpp.hpp"
 #include "std_msgs/msg/string.hpp"
-#include "my_interfaces/msg/velocity.hpp"
+#include "catamaran_interfaces/msg/velocity.hpp"
 #include <string> 
 
-using my_interfaces::msg::Velocity;
+using catamaran_interfaces::msg::Velocity;
 using namespace std::chrono_literals;
 
 class ControlVelocityNode : public rclcpp::Node{
 public:
     ControlVelocityNode():Node("control_velocity"){
 
-        publisher_ = this->create_publisher<my_interfaces::msg::Velocity>("velocity", 10);
+        publisher_ = this->create_publisher<catamaran_interfaces::msg::Velocity>("velocity", 10);
 
         timer_ = this->create_wall_timer(std::chrono::seconds(1),
                                         [this]{publishVelocity();});
@@ -51,7 +51,7 @@ private:
                         command.c_str(), e.what());
         }
     }
-    rclcpp::Publisher<my_interfaces::msg::Velocity>::SharedPtr publisher_;
+    rclcpp::Publisher<catamaran_interfaces::msg::Velocity>::SharedPtr publisher_;
     std::string command;
     rclcpp::TimerBase::SharedPtr timer_;
     
