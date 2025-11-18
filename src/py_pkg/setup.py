@@ -25,7 +25,8 @@ setup(
     entry_points={
         'console_scripts': [
             "my_listener = py_pkg.my_listener:main",
-            "my_publisher = py_pkg.my_publisher:main"
+            "my_publisher = py_pkg.my_publisher:main",
+            "control_velocity_py = py_pkg.control_velocity_py:main"
         ],
     },
 )
