@@ -34,7 +34,9 @@ sudo apt install -y \
 Para la raspberry haría falta también:
 ```
 sudo apt install libwiringpi-dev
-sudo chmod u+s /usr/bin/gpio
+sudo mknod /dev/gpiomem c 247 0
+sudo chmod 666 /dev/gpiomem
+
 ```
 ## 2. Clonar este repo.
 ```
