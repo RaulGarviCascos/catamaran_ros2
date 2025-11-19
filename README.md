@@ -33,7 +33,7 @@ sudo apt install -y \
 ```
 Para la raspberry haría falta también:
 ```
-sudo apt install -y wiringpi
+sudo apt install libwiringpi-dev
 sudo chmod u+s /usr/bin/gpio
 ```
 ## 2. Clonar este repo.
