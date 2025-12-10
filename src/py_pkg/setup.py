@@ -26,7 +26,8 @@ setup(
         'console_scripts': [
             "my_listener = py_pkg.my_listener:main",
             "my_publisher = py_pkg.my_publisher:main",
-            "control_velocity_py = py_pkg.control_velocity_py:main"
+            "control_velocity_py = py_pkg.control_velocity_py:main",
+            "joystick_cmd_vel = py_pkg.joystick_pygame_cmd_vel:main",
         ],
     },
 )
