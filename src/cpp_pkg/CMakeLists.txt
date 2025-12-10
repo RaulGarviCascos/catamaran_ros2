@@ -11,6 +11,8 @@ find_package(rclcpp REQUIRED)
 find_package(example_interfaces REQUIRED)
 find_package(std_msgs REQUIRED)
 find_package(catamaran_interfaces REQUIRED)
+find_package(geometry_msgs REQUIRED)
+find_package(mavros_msgs REQUIRED)
 
 add_executable(listener_velocity src/listener_velocity.cpp)
 ament_target_dependencies(listener_velocity 
@@ -31,7 +33,29 @@ ament_target_dependencies(control_velocity
                           std_msgs
                           )
 
-                          # Aquí enlazamos wiringPi (librería del sistema), NO como dependencia ROS
+add_executable(robot_news_station src/robot_news_station.cpp)
+ament_target_dependencies(robot_news_station rclcpp)
+ament_target_dependencies(robot_news_station example_interfaces)
+
+add_executable(smartphone src/smartphone.cpp)
+ament_target_dependencies(smartphone rclcpp)
+ament_target_dependencies(smartphone std_msgs)
+
+add_executable(listener_cmd_vel src/listener_cmd_vel.cpp)
+ament_target_dependencies(listener_cmd_vel 
+                          rclcpp
+                          geometry_msgs
+                          )
+
+add_executable(mapping_cmd_to_override src/mapping_cmd_to_override.cpp)
+ament_target_dependencies(mapping_cmd_to_override 
+                          rclcpp
+                          geometry_msgs
+                          std_msgs
+                          mavros_msgs
+                          )   
+
+# Aquí enlazamos wiringPi (librería del sistema), NO como dependencia ROS
 find_library(WIRINGPI_LIB wiringPi)
 if(NOT WIRINGPI_LIB)
   message(FATAL_ERROR "No se encontró la librería wiringPi. ¿Está instalada?")
@@ -46,6 +70,10 @@ install(TARGETS
   control_velocity
   listener_velocity
   motor_brushless_node
+  listener_cmd_vel
+  smartphone
+  mapping_cmd_to_override
+  robot_news_station
   DESTINATION lib/${PROJECT_NAME}
 )
 ament_package()
