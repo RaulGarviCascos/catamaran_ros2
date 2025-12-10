@@ -31,11 +31,18 @@ sudo apt install -y \
   python3-colcon-common-extensions \
   git
 ```
-Para la raspberry haría falta también:
+### 1.3 Libreria controlar GPIO Raspberry
 ```
-sudo apt install -y wiringpi
-sudo chmod u+s /usr/bin/gpio
+cd /tmp
+git clone https://github.com/WiringPi/WiringPi.git
+cd WiringPi
+./build
+
+sudo chmod 666 /dev/gpiomem
 ```
+
+La última orden es para que no haga falta ejecutar sudo para controlar el gpio, ya que por default es necesario. Este comando puede variar según modelo.
+
 ## 2. Clonar este repo.
 ```
 git clone https://github.com/RaulGarviCascos/catamaran_ros2

@@ -5,7 +5,7 @@
 #include <softPwm.h>
 #include <thread>
 #include "rclcpp/rclcpp.hpp"
-#include "my_interfaces/msg/velocity.hpp"
+#include "catamaran_interfaces/msg/velocity.hpp"
 
 constexpr int MOVE = 1;
 constexpr int STOP = 2;
@@ -39,21 +39,21 @@ T constrain(T x, T minVal, T maxVal) {
 }
 
 //ROS2 NODE
-using my_interfaces::msg::Velocity;
+using catamaran_interfaces::msg::Velocity;
 
 class MotorBrushlessNode : public rclcpp::Node{
 public:
 
     MotorBrushlessNode():Node("motor_brushless_node"){
-        subscriber_ = this->create_subscription<my_interfaces::msg::Velocity>(
+        subscriber_ = this->create_subscription<catamaran_interfaces::msg::Velocity>(
             "velocity",                                                                                 // topic
             10,                                                                                         // tamaño de la cola
-            [this](const my_interfaces::msg::Velocity::SharedPtr msg) { callbackRobotNews(msg);}        // función callback
+            [this](const catamaran_interfaces::msg::Velocity::SharedPtr msg) { callbackRobotNews(msg);}        // función callback
         );
     }
 
 private:
-    void callbackRobotNews(const my_interfaces::msg::Velocity::SharedPtr msg){
+    void callbackRobotNews(const catamaran_interfaces::msg::Velocity::SharedPtr msg){
 
         targetVLeft  = constrain(msg->v_left,  1000, 2000);
         targetVRight = constrain(msg->v_right, 1000, 2000);
@@ -61,7 +61,7 @@ private:
         std::string vright = std::to_string(msg->v_right);
         RCLCPP_INFO(this->get_logger(), "Heard %s,%s",vleft.c_str(),vright.c_str());
     }
-    rclcpp::Subscription<my_interfaces::msg::Velocity>::SharedPtr subscriber_;
+    rclcpp::Subscription<catamaran_interfaces::msg::Velocity>::SharedPtr subscriber_;
 };
 
 
